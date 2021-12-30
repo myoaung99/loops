@@ -6,49 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
-    <div class="news">
-      <div class="card">
-        <img class="image" src="" alt="" />
-        <h4 class="title"></h4>
-        <p class="description"></p>
-        <p class="content"></p>
-        <small class="author"></small>
-        <a class="read-more" href="">read more...</a>
-      </div>
-    </div>
+    <div class="news"></div>
     <script src="news.js"></script>
     <script>
-      //   const titleDisplay = document.querySelector(".title");
-      //   const imageDisplay = document.querySelector(".image");
-      //   const authorDisplay = document.querySelector(".author");
-      //   const descriptionDisplay = document.querySelector(".description");
-      //   const readMoreDisplay = document.querySelector(".read-more");
-      //   const contentDisplay = document.querySelector(".content");
+      const news = document.querySelector(".news");
+      data.articles.map((el, index) => {
+        news.innerHTML += `
+        <div class="card" style="width: 25rem;">
+        <img class="image card-img-top"  src="${el.urlToImage}" alt="" />
 
-      //   data.articles.map((el, index) => {
-      //     //   titleDisplay.innerHTML += el.title;
-      //     console.log(el);
-
-      //     // imageDisplay.src = el.urlToImage;
-      //     imageDisplay.innerHTML = `<img class="image" src="${el.urlToImage}"></img>`;
-      //     // titleDisplay.innerHTML = el.title;
-      //     // authorDisplay.innerHTML = el.author;
-      //     // descriptionDisplay.innerHTML = el.description;
-      //     // contentDisplay.innerHTML = el.content;
-      //   });
-
-      // imageDisplay.src = data.articles[0].urlToImage;
-      // titleDisplay.innerHTML = data.articles[0].title;
-      // authorDisplay.innerHTML = data.articles[0].author;
-      // descriptionDisplay.innerHTML = data.articles[0].description;
-      // contentDisplay.innerHTML = data.articles[0].content;
-
-      // readMoreDisplay.addEventListener("click", () => {
-      //   event.preventDefault();
-      //   contentDisplay.classList.toggle("show-hide");
-      // });
+        <div class="card-body">
+        <h4 class="title card-title">${el.title}</h4>
+        <p class="description card-text">${el.description}</p>
+        <small class="author">${el.author}</small><br>
+        <button type="button" class="btn btn-info">
+            <a class="read-more" href="${el.url}">Read more</a>
+            </button>
+        
+            </div>
+      </div>`;
+      });
     </script>
   </body>
 </html>

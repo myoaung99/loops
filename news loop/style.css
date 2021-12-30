@@ -4,37 +4,29 @@
   box-sizing: border-box;
 }
 
-.show-hide {
-  display: block !important;
-}
-
 .news {
-  width: 80%;
-  margin: 100px 0 auto;
-  columns: 3 250px;
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .card {
-  width: 100%;
-}
-
-.image {
-  width: 100%;
-  height: 200px;
-}
-
-.title {
-}
-
-.author {
-}
-
-.description {
-}
-
-.content {
-  display: none;
+  padding: 10px;
+  margin: 10px;
+  position: relative;
 }
 
 .read-more {
+  text-decoration: none;
+  color: black;
+}
+
+.btn-info {
+  margin: 10px 0;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
 }
