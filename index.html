@@ -14,10 +14,12 @@
         width: 50px;
         height: 50px;
         border: 1px solid black;
+        padding: 10px 20px;
       }
+      /*       
       .bg-dark {
         background-color: black;
-      }
+      }  */
     </style>
   </head>
   <body>
@@ -27,6 +29,49 @@
       <tbody id="tbody"></tbody>
     </table>
 
+    <table>
+      <tbody id="ctb">
+        <tr>
+          <td>No</td>
+          <td>Country</td>
+          <td>Total Confirmed</td>
+          <td>Total Death</td>
+        </tr>
+      </tbody>
+    </table>
+
     <script src="news.js"></script>
+    <script>
+      const global = data.Global;
+      const country = data.Countries;
+
+      console.log(global);
+      let tbody = document.querySelector("#tbody");
+      let ctb = document.querySelector("#ctb");
+
+      for (x in global) {
+        tbody.innerHTML += `
+        <tr>
+          <td>${x}</td>
+          <td>${global[x]}</td>
+        </tr>`;
+      }
+
+      console.log(country);
+
+      let i = 1;
+
+      for (x of country) {
+        console.log(x);
+        ctb.innerHTML += `
+        <tr>
+          <td>${i}</td>
+          <td>${x.Country}</td>
+          <td>${x.TotalConfirmed}</td>
+          <td>${x.TotalDeaths}</td>
+        </tr>`;
+        i++;
+      }
+    </script>
   </body>
 </html>
