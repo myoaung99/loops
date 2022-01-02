@@ -13,13 +13,33 @@
       crossorigin="anonymous"
     />
   </head>
+  <style>
+    body {
+      height: 100vh;
+    }
+    #loading {
+      position: fixed;
+      top: 40%;
+      left: 42%;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
   <body>
+    <img id="loading" src="loading.gif" alt="" />
     <div class="news"></div>
-    <script src="news.js"></script>
     <script>
       const news = document.querySelector(".news");
-      data.articles.map((el, index) => {
-        news.innerHTML += `
+      const endPoint =
+        "https://newsapi.org/v2/everything?q=bitcoin&apiKey=caa8a3621a5e481c96807e77fe1dfc91";
+
+      fetch(endPoint)
+        .then((response) => response.json())
+        .then((data) => {
+          document.querySelector("#loading").classList.add("hidden");
+          data.articles.map((el, index) => {
+            news.innerHTML += `
         <div class="card" style="width: 25rem;">
         <img class="image card-img-top"  src="${el.urlToImage}" alt="" />
 
@@ -30,10 +50,11 @@
         <button type="button" class="btn btn-info">
             <a class="read-more" href="${el.url}">Read more</a>
             </button>
-        
+
             </div>
       </div>`;
-      });
+          });
+        });
     </script>
   </body>
 </html>
